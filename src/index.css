@@ -1,0 +1,264 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/*header{
+	padding:5px;
+	background-color: orangered;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: fixed;
+	height: 60px;
+	width: 100%;
+	margin-top: -60px;
+
+}
+*/
+
+#profilepic{
+	height: 40px;
+	border-radius: 50%;
+	margin-top: -15px;
+	margin-bottom: -15px;
+	margin-right: 5px;
+}
+
+
+
+#loader{
+	text-align: center;
+	height: calc(100vh - 50px);
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.body{
+	padding-top: 50px;
+}
+
+
+
+.signin h3{
+	font-weight: lighter;
+	margin-bottom: 0px;
+}
+
+.signin h2{
+	margin-bottom: 50px;
+}
+
+.navbar-default .navbar-brand{
+	text-transform: uppercase;
+	font-size: 22pt;
+	font-weight: bold;
+	color: orangered;
+}
+
+.navbar-brand {
+	padding: 0px;
+	line-height: 50px;
+}
+
+.navbar-brand img{
+	height: 30px;
+	margin: 10px;
+	margin-right: 20px;
+}
+
+.navbar-default .navbar-brand:hover{
+	color: orangered;
+}
+
+
+.main{
+	text-align: center;
+	padding: 10px;
+	padding-top: 0px;
+}
+.main h3{
+	margin: 0px;
+}
+
+.signin:before{
+	content: '';
+	background-size: cover;
+	background-image: url('https://media.g2crowd.com/wp-content/uploads/2012/09/09174837/allhands-2.jpg');
+	-webkit-filter: blur(5px) brightness(55%);
+	 position: fixed;
+	z-index: -1;
+	width: 100%;
+	height: calc(100vh - 50px);
+	 display: block;
+	 
+}
+
+.signin{
+	padding:20px;
+	text-align: center;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: calc(100vh - 50px);
+
+}
+.signin h1{
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 48pt
+	;
+}
+
+#skip{
+	font-size: 12pt;
+	color: lightgray;
+	cursor: pointer;
+}
+
+.authen{
+	float: right;
+	padding: 10px;
+	color: white;
+}
+
+#signOut{
+	margin-left: 10px;
+}
+
+.header{
+	font-size: 30pt;
+	float: center;
+	color: white;
+	font-weight: bold;
+	font-family: 'Open Sans Condensed';
+	text-transform: uppercase;
+}
+
+.logo{
+	height: 60px;
+	float: left;
+	vertical-align: center;
+}
+
+.member-row{
+	display: flex;
+	padding: 10px;
+	border-top: 1px solid lightgray;
+	text-align: left;
+}
+
+.name{
+	font-family: 'Open Sans';
+	font-size: 20pt;
+	padding: 5px;
+	font-weight: lighter;
+	padding-bottom: 0px;
+	
+
+}
+
+
+.title{
+	font-size: 14pt;
+	padding: 5px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #1976D2;
+}
+
+.bio{
+	padding: 5px;
+}
+
+
+
+.img{
+	margin: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+	min-width: 200px;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+.vote-row{
+	display: flex;
+	padding: 5px;
+	transition: 0.4s all;
+	align-items: center;
+}
+
+
+.vote-text{
+	font-weight: bold;
+	float: left;
+
+}
+
+.vote-image{
+	width: 20px;
+	height: 20px;
+	float: left;
+	transition: 0.4s all;
+	margin-right: 5px;
+}
+
+.vote-tick{
+	width: 20px;
+	height: 20px;
+	float: left;
+	transition: 0.4s all;
+	margin-right: 5px;
+	color: green;
+}
+
+.vote-button:hover{
+	transform: scale(1.1);
+}
+
+.vote-yes{
+	float:left;
+	color: #1976D2;
+	text-decoration: none;
+	font-size: 12pt;
+}
+
+.vote-voted{
+	float:left;
+	color: #009688;
+	text-decoration: none;
+	font-size: 12pt;
+}
+
+.vote-voted:hover{
+	color: #b71c1c;
+	transition: 0.4s ease;
+}
+
+.vote-button{
+	float: left;
+	margin-left: 10px;
+	padding: 3px;
+	padding-left: 10px;
+	padding-right: 10px;
+	transition: 0.2s all;
+	text-transform: uppercase;
+	font-weight: bold;
+	cursor: pointer;
+	background-color: #FAFAFA;
+	border: 1px solid lightgray;
+	border-radius: 20px;
+}
+
+.vote-stats{
+	padding: 5px;
+	padding-top: 0;
+
+}
+
+
