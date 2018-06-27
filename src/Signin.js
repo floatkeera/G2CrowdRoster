@@ -30,7 +30,7 @@ class Signin extends Component{
 			<div className = "signin">
 			<div className= "signinbox">
 				<h1>Welcome to the Crowd</h1>
-				<h2>Learn about our amazing people!</h2>
+				<h2>Learn about our amazing people.</h2>
           		<h3>Sign in with your G2 Crowd account.</h3>
           		<StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={auth}/>
           		<a id="skip" onClick={this.props.handleClick}>Skip for now</a>
