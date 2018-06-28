@@ -7,7 +7,7 @@ import WebFont from 'webfontloader';
 
 WebFont.load({
   google: {
-    families: ['Open Sans:300,400,600,700', 'Open Sans Condensed:300,700', 'sans-serif']
+    families: ['Open Sans:300,400,600,700', 'Montserrat:300,400,500,600,700', 'sans-serif']
   }
 });
 

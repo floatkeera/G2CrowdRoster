@@ -24,7 +24,7 @@ export const googleProvider = firebase.auth.GoogleAuthProvider.PROVIDER_ID;
 
 
 
-export async function getMembers(){
+export async function getMembers(){ //deprecated
 	const response = await fetch('https://api.myjson.com/bins/16roa3').catch((err) => console.warn(err));
 
 	return response.json();
