@@ -208,12 +208,12 @@ form textarea{
 	content: '';
 	background-size: cover;
 	background-image: url('https://media.g2crowd.com/wp-content/uploads/2012/09/09174837/allhands-2.jpg');
-	-webkit-filter: blur(5px) brightness(55%);
+	-webkit-filter: blur(10px) brightness(55%);
 	 position: fixed;
 	z-index: -1;
 	width: 100%;
 	height: calc(100vh - 50px);
-	 display: block;
+	display: block;
 	 
 }
 
