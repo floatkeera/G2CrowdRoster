@@ -12,11 +12,13 @@ class Roster extends Component{
 		loading: true
 	}
 
+	ref = db.ref('users');
+
 	componentDidMount(){
 		this.setState({membersArray: []});
-		var ref = db.ref('users');
+		
 		var members = []
-		ref.once('value', (snapshot) => {
+		this.ref.once('value', (snapshot) => {
 			snapshot.forEach((childSnapshot) =>{
 				var childKey = childSnapshot.key;
 				var childData = childSnapshot.val();
@@ -39,6 +41,10 @@ class Roster extends Component{
 
 			});
 		
+	}
+
+	componentWillUnmount = () => {
+		this.ref.off();
 	}
 
 	render(){

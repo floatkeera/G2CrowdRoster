@@ -14,6 +14,7 @@ class Member extends Component{
 	
 	voteCountRef = null;
 	userVoteRef = null;
+	receiverVoteRef = null;
 
 	handleVote = () =>{
 
@@ -25,6 +26,7 @@ class Member extends Component{
 		});
 
 		this.userVoteRef.set(true);
+		this.receiverVoteRef.set(true);
 
 	}
 
@@ -37,6 +39,7 @@ class Member extends Component{
 		});
 
 		this.userVoteRef.remove();
+		this.receiverVoteRef.remove();
 
 	}
 
@@ -46,7 +49,7 @@ class Member extends Component{
 			this.setState(() => ({votes: snapshot.val()}))
 		})
 
-		this.userVoteRef = db.ref(`users/${this.props.uid}/${this.props.fbKey}`);
+		this.userVoteRef = db.ref(`users/${this.props.uid}/votesGiven/${this.props.fbKey}`);
 		this.userVoteRef.on('value', (snapshot) =>{
 			if(snapshot.exists()){
 				this.setState(()=> ({votable: false}));
@@ -54,7 +57,10 @@ class Member extends Component{
 			} else{
 				this.setState(()=> ({votable: true}));
 			}
-		})
+		});
+
+		this.receiverVoteRef = db.ref(`users/${this.props.fbKey}/votesReceived/${this.props.uid}`);
+
 
 	} 
 
@@ -133,15 +139,11 @@ class VoteButton extends Component{
 				Yes!</div>) :
 			
 				(<div className={className} onClick={this.props.voteClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-					<Glyphicon style={{"margin-right": "10px"}}glyph={this.state.isHovered ? "remove" : "ok"}/>
+					<Glyphicon style={{"marginRight": "10px"}}glyph={this.state.isHovered ? "remove" : "ok"}/>
 				
 				{this.state.isHovered ? 'Remove' : 'Voted'}</div>)
-
-		
 			
-			)
-
-		
+			)	
 	}
 }
 

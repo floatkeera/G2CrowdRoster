@@ -37,15 +37,20 @@ class Signin extends Component{
 
 				<h1>Welcome to the Crowd</h1>
 				<h2>Learn about our amazing people.</h2>
-        <div className="signinMini">
-          		<h3>Sign in with your G2 Crowd account.</h3>
-          		<StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={auth}/>
-          		<a id="skip" onClick={this.props.handleClick}>Skip for now</a>
-              <br/>
-              <br/>
-              <p>By signing up, you agree to create a profile of your own.</p>
-              </div>
+        <div id="authenbox">
+         <div className="signinMinibg"> </div>
+          <div className="signinMini">
+
+            		<h3>Sign in with your G2 Crowd account.</h3>
+            		<StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={auth}/>
+            		<a id="skip" onClick={this.props.handleClick}>Skip for now</a>
+                <br/>
+                <br/>
+                <p>By signing up, you agree to create a profile of your own.</p>
+                </div>
           </div>
+          </div>
+         
           </div>
           )
 	}

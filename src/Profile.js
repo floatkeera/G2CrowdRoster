@@ -6,7 +6,9 @@ import { BeatLoader } from 'react-spinners';
 class Profile extends Component{
 	
 	fbuser = auth.currentUser;	
+
 	userRef = db.ref(`users/${this.fbuser.uid}`)
+	friendsRef = db.ref(`users/${this.fbuser.uid}/votesReceived`);
 
 	state= {
 		editMode: this.props.newUser,
@@ -15,14 +17,29 @@ class Profile extends Component{
 		title: null,
 		bio: null,
 		image_url: null,
-		loading: false
+		loading: false,
+		friendsUIDArray: []
 	}
 
 	componentDidMount(){
+		
 		this.userRef.on('value', (snapshot) =>{
 			var user = snapshot.val();
 			this.setState(user)
-		})
+		});
+
+		this.friendsRef.once('value', (snapshot) => {
+			snapshot.exists() && this.setState({
+				friendsUIDArray: Object.keys(snapshot.val())
+			});
+		});
+
+
+	}
+
+	componentWillUnmount = () =>{
+		this.userRef.off();
+		this.friendsRef.off();
 	}
 	
 
@@ -35,9 +52,10 @@ class Profile extends Component{
 	handleFormClick = () => {
 		this.setState({loading: true})
 		var formVals = this.formApi.getState().values;
+		var newName = formVals.name
 		this.userRef.update(formVals, () =>{
-			this.fbuser.updateProfile({displayName: formVals.name}).then( () =>{
-			this.state.newUser && window.location.reload();
+			this.fbuser.updateProfile({displayName: newName}).then( () =>{
+			window.location.reload();
 			this.state.newUser&& this.props.history.push('/roster');
 			this.setState({
 				editMode: false,
@@ -55,6 +73,7 @@ class Profile extends Component{
 
 	render() {
 		
+		console.log(this.state.friendsUIDArray);
 
 		return (
 			<div className="profile">
@@ -111,7 +130,7 @@ class Profile extends Component{
 				<div className="profile-body">
 
 					<EditProfile bio={this.state.bio} editMode={this.state.editMode}></EditProfile>
-					<MyFriends></MyFriends>
+					<MyFriends friends={this.state.friendsUIDArray}></MyFriends>
 				</div>
 
 
@@ -137,13 +156,55 @@ class EditProfile extends Component{
 }
 
 class MyFriends extends Component{
+
+	
+	
 	render() {
+		console.log(this.props.friends)
+		var name = null;
+		var image_url = null
+
 		return (
 			<div className="profile-friends">
 				<h2>Who wants to work with me?</h2>
+				
+				{this.props.friends.map((friendUID) => <FriendInfo key={friendUID} UID={friendUID}></FriendInfo>)}
+
 			</div>
 		);
 	}
+}
+
+class FriendInfo extends Component{
+	state={
+		name: null,
+		image_url: null
+	}
+
+	componentDidMount(){
+		console.log(this.props.UID);
+		db.ref(`users/${this.props.UID}`).once('value', (snapshot) => {
+			this.setState({
+				name: snapshot.val().name,
+				image_url:snapshot.val().image_url
+			})
+
+		});
+	}
+
+	componentWillUnmount(){
+
+	}
+
+	render() {
+		return (
+			<div className = "friend-info">
+				<img className="friend-img" src={this.state.image_url} alt=""/>
+				<div className="friend-name">{this.state.name}</div>
+			</div>
+		);
+	}
+
 }
 
 export default Profile

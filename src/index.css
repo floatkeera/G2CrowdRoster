@@ -27,6 +27,22 @@ body {
 	margin-left: 50px;
 }
 
+.friend-info{
+	display: flex;
+	align-items: center;
+	padding: 5px;
+}
+
+.friend-img{
+	height: 50px;
+	border-radius: 50%;
+	margin-right: 25px;
+}
+
+.friend-name{
+	font-size: 12pt;
+}
+
 #profilepic{
 	height: 40px;
 	border-radius: 50%;
@@ -208,13 +224,22 @@ form textarea{
 	content: '';
 	background-size: cover;
 	background-image: url('https://media.g2crowd.com/wp-content/uploads/2012/09/09174837/allhands-2.jpg');
-	-webkit-filter: blur(10px) brightness(55%);
+	-webkit-filter: brightness(55%);
 	 position: fixed;
 	z-index: -1;
 	width: 100%;
 	height: calc(100vh - 50px);
 	display: block;
 	 
+}
+
+.signinMinibg{
+	-webkit-filter: blur(10px);
+	background-size: cover;
+	width: 100%;
+	display: block;
+	background-image: url('https://media.g2crowd.com/wp-content/uploads/2012/09/09174837/allhands-2.jpg');
+	z-index: -1;
 }
 
 .signinbox{
