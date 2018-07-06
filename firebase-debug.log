@@ -1,0 +1,39 @@
+[debug] [2018-07-06T21:36:42.242Z] ----------------------------------------------------------------------
+[debug] [2018-07-06T21:36:42.245Z] Command:       /Users/temp/.nvm/versions/node/v8.11.3/bin/node /Users/temp/teamroster/node_modules/.bin/firebase deploy
+[debug] [2018-07-06T21:36:42.245Z] CLI Version:   3.19.0
+[debug] [2018-07-06T21:36:42.245Z] Platform:      darwin
+[debug] [2018-07-06T21:36:42.245Z] Node Version:  v8.11.3
+[debug] [2018-07-06T21:36:42.246Z] Time:          Fri Jul 06 2018 16:36:42 GMT-0500 (CDT)
+[debug] [2018-07-06T21:36:42.246Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-06T21:36:42.257Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-06T21:36:42.257Z] > authorizing via signed-in user
+[debug] [2018-07-06T21:36:42.258Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/g2crowdroster  
+  
+ Fri Jul 06 2018 16:36:42 GMT-0500 (CDT)
+[debug] [2018-07-06T21:36:42.527Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-06T21:36:42.528Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/g2crowdroster/tokens  
+  
+ Fri Jul 06 2018 16:36:42 GMT-0500 (CDT)
+[debug] [2018-07-06T21:36:42.818Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'g2crowdroster'...
+[info] 
+[info] i  deploying database, hosting
+[info] i  database: checking rules syntax...
+[debug] [2018-07-06T21:36:42.925Z] >>> HTTP REQUEST PUT https://g2crowdroster.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "true",
+    ".write": "true"
+  }
+} 
+ Fri Jul 06 2018 16:36:42 GMT-0500 (CDT)
+[debug] [2018-07-06T21:36:43.055Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database g2crowdroster is valid
+[info] i  hosting: preparing build directory for upload...
+[debug] [2018-07-06T21:36:43.474Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/g2crowdroster/uploads/-LGlWdOmhV5fS3C5iEIy?fileCount=13&message=  
+  
+ Fri Jul 06 2018 16:36:43 GMT-0500 (CDT)
+[debug] [2018-07-06T21:36:45.758Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-06T21:36:45.759Z] [hosting] .tgz uploaded successfully, waiting for extraction

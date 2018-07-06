@@ -250,7 +250,8 @@ form textarea{
 	 position: fixed;
 	z-index: -1;
 	width: 100%;
-	height: calc(100vh - 50px);
+	margin-top: -25px;
+	height: calc(100vh + 50px);
 	display: block;
 }
 
@@ -258,12 +259,13 @@ form textarea{
 	content: '';
 	background-size: cover;
 	background-image: url('https://media.g2crowd.com/wp-content/uploads/2012/09/09174837/allhands-2.jpg');
-	-webkit-filter: brightness(55%) blur(5px);
+	-webkit-filter: brightness(55%) blur(10px);
 	 position: fixed;
 	z-index: -1;
 	width: 100%;
 	height: calc(100vh + 50px);
 	display: block;
+
 	 
 }
 
@@ -351,6 +353,7 @@ form textarea{
 	display: inline-flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	margin-bottom: 0px;
 }
 
 .header{
