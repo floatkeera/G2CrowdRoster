@@ -3,7 +3,7 @@ import { db } from './utils/api'
 import thumbs from './assets/thumbs-up.svg'
 import tick from './assets/tick.svg'
 import cross from './assets/remove.svg';
-import { Glyphicon } from 'react-bootstrap';
+import { Glyphicon, Panel } from 'react-bootstrap';
 
 class Member extends Component{
 
@@ -74,7 +74,7 @@ class Member extends Component{
 			<div className="member-row">
 				<div className="img" style={{backgroundImage: `url(${this.props.image_url})`, backgroundSize: 'cover' }}> 
 				</div>
-				<Data registered={this.props.registered} name={this.props.name} title={this.props.title} bio={this.props.bio} votes={this.state.votes} voteClick={this.state.votable ? this.handleVote : this.handleUnVote} votable={this.state.votable}/> 
+				<Data handleClick={this.props.handleResize} registered={this.props.registered} name={this.props.name} title={this.props.title} bio={this.props.bio} votes={this.state.votes} voteClick={this.state.votable ? this.handleVote : this.handleUnVote} votable={this.state.votable}/> 
 				
 
 			</div>
@@ -91,7 +91,20 @@ class Data extends Component{
 			<div className="data">
 				<div className="name">{this.props.name}</div>
 				<div className="title">{this.props.title}</div>
-				<div className="bio">{this.props.bio}</div>
+				
+				        <Panel>
+				          <Panel.Heading id="collapsible-bio-heading" >
+				            <Panel.Title  toggle>
+				          	
+				              {`More about ${this.props.name.split(' ')[0]}`}
+				            </Panel.Title>
+				          </Panel.Heading>
+				          <Panel.Collapse onEntered={this.props.handleClick} onExited={this.props.handleClick}>
+				            <Panel.Body>
+              {this.props.bio}
+            </Panel.Body>
+          </Panel.Collapse>
+        </Panel>
 				{this.props.registered && <VoteRow voteClick={this.props.voteClick} name={this.props.name} votable={this.props.votable}></VoteRow>}
 				{this.props.registered && <VoteStats votes={this.props.votes}/>}
 			</div>
@@ -105,7 +118,7 @@ class VoteRow extends Component{
 	render() {
 		return (
 			<div className="vote-row">
-				<div className="vote-text">{`Want to work with ${this.props.name}?`}</div>
+				<div className="vote-text">{`Want to work with ${this.props.name.split(' ')[0]}?`}</div>
 				<VoteButton voteClick={this.props.voteClick} votable={this.props.votable}></VoteButton>
 			</div>
 		);

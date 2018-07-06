@@ -90,7 +90,7 @@ class App extends Component {
               <Link to="/roster">
               <Navbar.Brand>
                 <img src={logo} alt="" className="logo"/>
-                Team Roster
+                Roster
               </Navbar.Brand> 
               </Link>
               {this.state.signedIn && <Navbar.Toggle/>}
@@ -99,9 +99,7 @@ class App extends Component {
               <Navbar.Collapse>
                 <Nav pullRight>
                   {(this.state.user)&& <LinkContainer to="/profile"><NavItem><span><img id="profilepic" src={this.state.photoURL} alt=""/> {this.state.user}</span></NavItem></LinkContainer>}
-                  <NavDropdown  id= "logout" title="">
-                    <MenuItem onClick={() => auth.signOut()}>Log Out</MenuItem>
-                  </NavDropdown>
+                 <MenuItem onClick={() => auth.signOut()}>Log Out</MenuItem>
                 </Nav>
               </Navbar.Collapse>
             }

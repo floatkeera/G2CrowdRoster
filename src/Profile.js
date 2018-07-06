@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { getMembers, db, auth } from './utils/api'
 import {Glyphicon, Modal } from 'react-bootstrap'
-import { Form, Text, TextArea } from 'informed'
+import { Form, Text, TextArea, Option, Select} from 'informed'
 import { BeatLoader } from 'react-spinners';
 class Profile extends Component{
+
+
+	deptArray=['executive', 'corporate', 'product', 'research', 'marketing', 'sales', 'customer success'];
 	
 	fbuser = auth.currentUser;	
 
@@ -18,7 +21,8 @@ class Profile extends Component{
 		bio: null,
 		image_url: null,
 		loading: false,
-		friendsUIDArray: []
+		friendsUIDArray: [],
+		dept: null
 	}
 
 	componentDidMount(){
@@ -91,13 +95,18 @@ class Profile extends Component{
                 color={'#1976D2'}/></div>
 				
 
-				{!this.state.loading && this.state.editMode && <Form getApi={this.setFormApi}>
-					<h3>Name</h3>
-					<Text field="name" id="form-name" initialValue={this.state.name || this.fbuser.displayName}/>
-					<h3>Title</h3>
-					<Text field="title" id="form-title" initialValue={this.state.title}/>
-					<h3>Bio</h3>
-					<TextArea field="bio" initialValue={this.state.bio}/>
+				{!this.state.loading && this.state.editMode && 
+					<Form getApi={this.setFormApi}>
+						<h3>Name</h3>
+						<Text field="name" id="form-name" initialValue={this.state.name || this.fbuser.displayName}/>
+						<h3>Title</h3>
+						<Text field="title" id="form-title" initialValue={this.state.title}/>
+						<h3>Team</h3>
+						<Select field="dept" id="form-dept" initialValue={this.state.dept}>
+							{this.deptArray.map((dept) => <Option value={dept}>{dept.toUpperCase()}</Option>)}
+						</Select>
+						<h3>Bio</h3>
+						<TextArea field="bio" initialValue={this.state.bio}/>
 					
 				</Form>}
 
@@ -176,14 +185,19 @@ class MyFriends extends Component{
 }
 
 class FriendInfo extends Component{
+	
+	dbListener = db.ref(`users/${this.props.UID}`)
+
 	state={
 		name: null,
 		image_url: null
 	}
 
+
+
 	componentDidMount(){
 		console.log(this.props.UID);
-		db.ref(`users/${this.props.UID}`).once('value', (snapshot) => {
+		this.dbListener.once('value', (snapshot) => {
 			this.setState({
 				name: snapshot.val().name,
 				image_url:snapshot.val().image_url
@@ -193,7 +207,7 @@ class FriendInfo extends Component{
 	}
 
 	componentWillUnmount(){
-
+		this.dbListener.off();
 	}
 
 	render() {

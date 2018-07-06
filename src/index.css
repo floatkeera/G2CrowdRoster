@@ -2,7 +2,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
+  overflow-y: scroll;
+    overflow-x: hidden;
 }
+
 
 /*header{
 	padding:5px;
@@ -70,7 +73,7 @@ body {
 	margin: -20px;
 	z-index: -1;
 	background-image: linear-gradient(to left, #30cfd0 0%, #330867 85%);
-	position: fixed;
+	position: absolute;
 	display: block;
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2)
 }
@@ -105,6 +108,12 @@ form h3{
 	font-weight: lighter;
 }
 
+#form-dept{
+	font-size: 14pt;
+	font-weight: lighter;
+	margin-bottom: 10px;
+}
+
 .profile h2{
 	font-size: 18pt;
 	font-family: 'Montserrat';
@@ -136,6 +145,7 @@ form h3{
 	margin-left: 20px;
 }
 
+
 input{
 
 	margin-bottom: 20px;
@@ -164,11 +174,9 @@ form textarea{
 	padding-top: 50px;
 }
 
-.panel{
-	width: 50%;
+#warning-panel{
+	width: fit-content;
 	margin: 0 auto;
-	margin-top: 20px;
-	margin-bottom: 20px;
 }
 .panel h3{
 	font-weight: bold;
@@ -195,6 +203,10 @@ form textarea{
 	
 }
 
+.navbar-default{
+	   box-shadow: 0 4px 4px -4px rgba(0,0,0,.5);
+}
+
 .navbar-brand {
 	padding: 0px;
 	line-height: 50px;
@@ -212,35 +224,57 @@ form textarea{
 
 
 .main{
-
-	padding: 10px;
+	/*padding: 10px;*/
 	padding-top: 0px;
+
 }
+
+.mason{
+	margin: 0 auto;
+	padding: 20px;
+
+}
+
 .main h3{
 	margin: 0px;
+	transition: 0.4s ease all;
+}
+
+
+.main:before{
+
+	content: '';
+	background-size: cover;
+	background-image: url('https://media.g2crowd.com/wp-content/uploads/2012/09/09174837/allhands-2.jpg');
+	-webkit-filter: brightness(40%);
+	 position: fixed;
+	z-index: -1;
+	width: 100%;
+	height: calc(100vh - 50px);
+	display: block;
 }
 
 .signin:before{
 	content: '';
 	background-size: cover;
 	background-image: url('https://media.g2crowd.com/wp-content/uploads/2012/09/09174837/allhands-2.jpg');
-	-webkit-filter: brightness(55%);
+	-webkit-filter: brightness(55%) blur(5px);
 	 position: fixed;
 	z-index: -1;
 	width: 100%;
-	height: calc(100vh - 50px);
+	height: calc(100vh + 50px);
 	display: block;
 	 
 }
 
-.signinMinibg{
+/*.signinMinibg{
 	-webkit-filter: blur(10px);
 	background-size: cover;
 	width: 100%;
 	display: block;
 	background-image: url('https://media.g2crowd.com/wp-content/uploads/2012/09/09174837/allhands-2.jpg');
 	z-index: -1;
-}
+}*/
 
 .signinbox{
 	flex-direction: column;
@@ -256,16 +290,19 @@ form textarea{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: calc(100vh - 50px);
+	height: calc(100vh - 100px);
+	margin-top: 50px;
 
 }
 
 .signinMini{
-	padding: 40px;
+	padding: 30px;
+	margin: 10px;
 	background: rgba(200, 200, 200, 0.5);
 	width: auto;
 	box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	text-shadow: 1px 1px 1px rgba(3, 3, 3, 0.44);
+
 }
 
 .signin h1{
@@ -273,6 +310,7 @@ form textarea{
 	font-weight: bold;
 	font-size: 48pt;
 	font-family: 'Montserrat';
+	padding: 20px;
 }
 
 
@@ -292,6 +330,29 @@ form textarea{
 	margin-left: 10px;
 }
 
+.filter{
+	padding: 20px;
+	text-align: center;
+	padding-bottom: 0px;
+}
+
+.filter h1{
+	margin: 0px;
+	color: white;
+	
+	font-weight: 200;
+
+	font-family: 'Montserrat';
+	text-transform: uppercase;
+}
+
+.filter-row{
+	margin: 20px;
+	display: inline-flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
 .header{
 	font-size: 30pt;
 	float: center;
@@ -307,12 +368,50 @@ form textarea{
 	vertical-align: center;
 }
 
+#collapsible-bio-heading{
+	text-transform: uppercase;
+	font-weight: 300;
+	background-color: #f7f9fc;
+	color: #707C80;
+	border: none;
+	font-family: 'Montserrat'
+}
+
 .member-row{
 	display: flex;
+	flex-direction: column;
 	padding: 10px;
-	border-bottom: 1px solid lightgray;
-	
+	border: 1px solid lightgray;
+	word-wrap: break-word;
 	text-align: left;
+	background-color: white;
+	margin: 10px;
+	width: 350px;
+	 box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.data{
+	text-align: center;
+	margin-top: 20px;
+}
+
+.bio{
+	text-align: left;
+}
+
+.panel{
+	width: calc(100% + 20px);
+	margin: 0 auto;
+	margin-left: -10px;
+	margin-right: -10px;
+	margin-top: 10px;
+	border: none;
+	box-shadow:  0px 0px 0px 1px rgba(0,0,0,.1);
+	border-radius: 0px;
+}
+
+.panel-body{
+	border: none;
+	padding-top: 10px;
 }
 
 .name{
@@ -321,8 +420,7 @@ form textarea{
 	padding: 5px;
 	font-weight: 600;
 	padding-bottom: 0px;
-	
-
+	line-height: 120%;
 }
 
 
@@ -337,31 +435,35 @@ form textarea{
 
 .bio{
 	padding: 5px;
+	display: block;
+	
+	word-wrap: break-word;
 }
 
 
 
 .img{
-	margin: 10px;
-	margin-left: 20px;
-	margin-right: 20px;
+	margin: 0 auto;
 	min-width: 200px;
 	height: 200px;
-	object-fit: cover;
+	width: 200px;
 	border-radius: 50%;
 }
 
 .vote-row{
 	display: flex;
-	padding: 5px;
+	margin: 10px;
 	transition: 0.4s all;
 	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
 
 .vote-text{
 	font-weight: bold;
-	float: left;
+	word-wrap: normal;
+	margin: 10px;
 
 }
 
@@ -403,8 +505,7 @@ form textarea{
 .vote-button{
 	display: flex;
 	align-items: center;
-	float: left;
-	margin-left: 10px;
+	justify-content: center;
 	padding: 3px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -441,6 +542,7 @@ form textarea{
 	text-align: center;
 	display: flex;
 	align-items: center;
+	margin: 5px;
 	
 
 }
@@ -460,6 +562,11 @@ form textarea{
 	border: 1px solid transparent;
 	color:#330867;
 
+}
+
+.edit-button.filter:hover, .edit-button.filter.active{
+	background-color: #3498db;
+	color: white;
 }
 
 .edit-button:hover{
