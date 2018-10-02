@@ -9,3 +9,5 @@ This app uses react-bootstrap and Masonry as well for interactive grid layout.
 ## Can visitors view the site?
 Yes! Visitors can view the site by clicking on "Skip for now" on the home page.
 
+## Preview
+![Roster page](http://floatkeera.github.io/assets/g2roster/screenshot.png "Roster page")
