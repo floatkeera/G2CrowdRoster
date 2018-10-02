@@ -11,3 +11,5 @@ Yes! Visitors can view the site by clicking on "Skip for now" on the home page.
 
 ## Preview
 ![Roster page](http://floatkeera.github.io/assets/g2roster/screenshot.png "Roster page")
+
+![Profile page](http://floatkeera.github.io/assets/g2roster/profile.png "Profile page")
